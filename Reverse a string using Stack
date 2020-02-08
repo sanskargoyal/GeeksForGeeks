@@ -1,0 +1,66 @@
+using namespace std;
+void reverse(char *str, int len);
+int main()
+{
+    long long int t;
+    cin>>t;
+    while(t--)
+    {
+        char str[10000];
+        cin>>str;
+        long long int len=strlen(str);
+        reverse(str,len);
+        cout<<str;
+        cout<<endl;
+    }
+        return 0;
+}
+/*This is a function problem.You only need to complete the function given below*/
+
+class Stack  
+{  
+    public: 
+    int top;  
+    unsigned capacity;  
+    char* array;  
+};  
+  
+Stack* createStack(unsigned capacity)  
+{  
+    Stack* stack = new Stack(); 
+    stack->capacity = capacity;  
+    stack->top = -1;  
+    stack->array = new char[(stack->capacity * sizeof(char))];  
+    return stack;  
+}
+int isFull(Stack* stack)  
+{ return stack->top == stack->capacity - 1; }  
+  
+int isEmpty(Stack* stack)  
+{ return stack->top == -1; }  
+  
+void push(Stack* stack, char item)  
+{  
+    if (isFull(stack))  
+        return;  
+    stack->array[++stack->top] = item;  
+}  
+  
+char pop(Stack* stack)  
+{  
+    if (isEmpty(stack))  
+        return -1;  
+    return stack->array[stack->top--];  
+}
+void reverse(char *str, int len)
+{
+Stack* stack = createStack(len);  
+  
+     
+    int i;  
+    for (i = 0; i < len; i++)  
+        push(stack, str[i]);  
+    for (i = 0; i < len; i++)  
+        str[i] = pop(stack);
+
+}
