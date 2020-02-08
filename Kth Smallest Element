@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int  a, n, k;
+    cin>>a;
+    for(int i=0; i<a; i++)
+    {
+        
+        cin>>n;
+        int arr[n];
+        for(int j=0; j<n; j++)
+        {
+            cin>>arr[j];
+
+        }
+        cin>>k;
+         
+        sort(arr, arr+n);
+        cout<<arr[k-1]<<endl;
+        
+
+    }
+	//code
+     
+	return 0;
+}
