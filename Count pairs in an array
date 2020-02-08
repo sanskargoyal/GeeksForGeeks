@@ -1,0 +1,38 @@
+using namespace std;
+
+int CountPair(int arr[] , int n ) 
+{ 
+    int result = 0;
+  
+    for (int i=0; i<n; i++) 
+    { 
+        
+        for (int j = i + 1; j < n; j++) 
+            if (i*arr[i] > j*arr[j] ) 
+                result ++; 
+    } 
+    return result; 
+}
+
+
+int main() {
+    int arr[100],n,t;
+    scanf("%d",&t);
+    
+        for(int i=0;i<t;i++)
+    {
+        scanf("%d",&n);
+        for(int j=0; j<n; j++)
+        {
+            scanf("%d",&arr[j]);
+            
+        }
+        printf("%d",CountPair(arr, n));
+        printf("\n");
+        
+    }
+    
+	
+    //code
+	return 0;
+}
