@@ -1,0 +1,37 @@
+Node* partition(Node *l, Node *h)
+{
+    
+    Node *pivot = l;
+    if(l == NULL || h == NULL)
+        return NULL;
+       Node *lo = l->next;
+    Node *hi = h;
+    while(lo!= NULL && hi != NULL && lo != hi->next )
+    {
+        while(lo != NULL && lo != hi->next && lo->data <= pivot->data )
+        {
+            lo = lo->next;
+        }
+        while(hi != NULL && lo != hi->next && hi->data > pivot->data)
+        {
+            hi = hi->prev;
+        }
+        if(hi != NULL && lo != hi && lo != hi->next && lo!=NULL)
+        {
+           
+            int temp = lo->data;
+            lo->data = hi->data;
+            hi->data = temp;
+            lo = lo->next;
+            hi = hi->prev;
+        }
+        
+    }
+    if(hi){
+       
+    int temp = pivot->data;
+    pivot->data = hi->data;
+    hi->data = temp;
+    }
+    return hi;
+}
