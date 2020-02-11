@@ -1,0 +1,31 @@
+void quickSortInternal (struct node **head, struct node *end)
+{
+    struct node **start;
+    struct node *temp;
+    struct node **pivot = head;
+
+    if ((*head) == NULL || (*head) == end) {
+        return;
+    }
+    start = &(*head)->next;
+    while (*start) {
+        if ((*start)->data < (*pivot)->data) {
+            temp = *start;
+            *start = (*start)->next;
+            temp->next = *head;
+            *head = temp;
+        } else {
+            start = &(*start)->next;
+        }   
+    }
+    quickSortInternal(&(*pivot)->next, NULL);
+    quickSortInternal(head, *pivot);
+}
+
+void quickSort(struct node **headRef) {
+    if (*headRef == NULL) {
+        return;
+    }
+    quickSortInternal(headRef, NULL);
+
+}
