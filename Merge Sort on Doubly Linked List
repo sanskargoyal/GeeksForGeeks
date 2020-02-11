@@ -1,0 +1,36 @@
+struct Node *sortDoubly(struct Node *head)
+{
+    // Code here
+    Node* slow=head,*fast=head;
+    while(1){
+        fast = fast->next;
+        if(fast==NULL||fast->next==NULL){
+            Node* t=slow->next;
+            slow->next=NULL;
+            t->prev=NULL;
+            return t;
+        } 
+        fast=fast->next;
+        slow = slow->next;
+    }
+}
+
+// Function to merge two DLLs
+struct Node *merge(struct Node *first, struct Node *second){
+    // Code here
+    if(first==NULL){return second;}
+    if(second==NULL) return first;
+    
+    if(first->data<second->data){
+        first->prev=NULL;
+        first->next=merge(first->next,second);
+        if(first->next) first->next->prev=first;
+        return first;
+    } else{
+        second->prev=NULL;
+        second->next=merge(first,second->next);
+        if(second->next) second->next->prev=second;
+        return second;
+    }
+    
+}
